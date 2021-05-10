@@ -1,2 +1,2 @@
 # Tic Tac Toe
- Part of my Minigames!  Read README.md before playing
+Random Games!  Read README.md before playing
