@@ -1,2 +1,2 @@
 # Tic Tac Toe
-Random Games!  Read README.md before playing
+Done on 7 Nov 2021 :)
