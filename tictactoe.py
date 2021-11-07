@@ -70,11 +70,11 @@ def checkForGameEnd(tttboard, tttsize):
 
 size = 3
 try:
-	size = int(input("What size of the board do you want (maximum 100, minimum 3)?"))
+	size = int(input("What size of the board do you want (maximum 9, minimum 3)?"))
 except ValueError:
 	print("That's not a number!")
 	exit()
-size = max(min(size, 100), 3)
+size = max(min(size, 9), 3)
 
 print(f"Sure! You will be playing on a {size} by {size} board!")
 
