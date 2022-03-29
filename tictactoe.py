@@ -1,13 +1,13 @@
 from enum import Enum
 
-
+# different results that could happen
 class result(Enum):
 	draw = 1
 	xWon = 2
 	oWon = 3
 	noResult = 4
 
-
+# code to manage formatting for board printing
 def printCount(tttboard, tttsize):
 	string = ""
 	for i in range(tttsize*4+1):
@@ -28,6 +28,7 @@ def printCount(tttboard, tttsize):
 	print("")
 
 
+# code that utilises the enum result to check whether the game has ended or not
 def checkForGameEnd(tttboard, tttsize):
 	#! diagonal
 	xCount = 0
@@ -69,8 +70,9 @@ def checkForGameEnd(tttboard, tttsize):
 
 
 size = 3
+# querying the size of the board
 try:
-	size = int(input("What size of the board do you want (maximum 9, minimum 3)?"))
+	size = int(input("What size of the board do you want (maximum 9, minimum 3) ?"))
 except ValueError:
 	print("That's not a number!")
 	exit()
@@ -87,6 +89,7 @@ for i in range(size):
 
 player = 'O'
 
+# driver code
 while True:
 	if player == 'X':
 		player = 'O'
@@ -95,8 +98,11 @@ while True:
 	print("\n\n")
 	print(f"It's {player}'s turn!")
 	place = 0
+	
+	# validity checking using try catch
 	while True:
 		try:
+			# main code to check for validity
 			print("Here is your board:\n\n")
 			printCount(board, size)
 			place = int(input("Which square do you want to put your marker on?")) - 1
@@ -106,18 +112,22 @@ while True:
 			yCoordinate = place//size;
 			xCoordinate = place - yCoordinate*size
 			if board[yCoordinate][xCoordinate] == "-":
-				#! Valid
+				#! Valid Input
 				board[yCoordinate][xCoordinate] = player
 				res = checkForGameEnd(board, size)
 				if(res == result.noResult): break
 				print("")
 				print("Final Board!")
+
+				# printing the board
 				printCount(board, size)
+
+				# printing the results of the round (if there are one)
 				if (res == result.draw): print("Draw!")
 				elif(res == result.oWon): print("O Won!")
 				elif(res == result.xWon): print("X Won!")
 				exit()
-				break
+				
 			else:
 				print("Place has already been taken!")
 		except ValueError:
